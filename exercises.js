@@ -30,13 +30,12 @@ function alphaOrder(str){
   if(typeof str === 'string'){
   var splitString = str.split('');
   var alpha = splitString.sort();
-  return alpha;
+  var joinArray = alpha.join("");
+  return joinArray;
   }else{
     return null;
   }
 }
-
-
 
 
  /** Function: vowelCount
@@ -49,6 +48,16 @@ function alphaOrder(str){
 
 
 
+function vowelCount(str) {
+  if(typeof str === 'string'){
+  var m = str.match(/[aeiou]/gi);
+  return m === null ? 0 : m.length;
+  }else{
+    return null;
+  }
+}
+
+
  /** Function: timeConvert
  * The function will take the str parameter representing the amount of minutes being passed in and
  * return the number of hours and minutes. Seperate the number of hours
@@ -57,6 +66,19 @@ function alphaOrder(str){
  * @return {string} as hours:minutes
  * ie: 68 => 1:8
  */
+
+function timeConvert(num){
+  var mins = 0;
+  var hours = 0;
+  if(typeof num === 'number'){
+    hours = Math.floor(num / 60);
+    mins = (num % 60);
+    return (hours+":"+mins);
+  }else{
+    return null;
+  }
+}
+
 
  /** Function: repeatString
  * The function will take in two parameters and repeat a given string (first argument)
@@ -67,6 +89,13 @@ function alphaOrder(str){
  * i.e repeatString("money", 3) => "moneymoneymoney".
  */
 
+function repeatString(string,number){
+  if(number > 0){
+    return string.repeat(number);
+  }else{
+    return null;
+  }
+}
 
 /**
  * Below here we see a module.exports which is set to an object with a bunch of keys.
@@ -84,8 +113,8 @@ function alphaOrder(str){
 
 module.exports = {
     firstReverse: firstReverse,
-    alphaOrder: null,
-    vowelCount: null,
-    timeConvert: null,
-    repeatString: null
-}
+    alphaOrder: alphaOrder,
+    vowelCount: vowelCount,
+    timeConvert: timeConvert,
+    repeatString: repeatString
+};
